@@ -1,0 +1,39 @@
+name: AegisEVM Security Audit
+
+on:
+  pull_request:
+    paths:
+      - '**/*.sol'
+  push:
+    branches:
+      - main
+    paths:
+      - '**/*.sol'
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install AegisEVM (Mythril Engine)
+        run: pip install mythril
+
+      - name: Run AegisEVM Symbolic Execution
+        run: |
+          echo "🛡️ Starting AegisEVM Analysis on Solidity files..."
+          
+          # Find all solidity files and run myth analyze on them
+          # If any issues are found, mythril returns a non-zero exit code
+          # which will automatically fail this GitHub Action and block the PR.
+          
+          for file in $(find . -name "*.sol"); do
+            echo "Analyzing $file..."
+            myth analyze "$file" -t 3 --execution-timeout 60
+          done
