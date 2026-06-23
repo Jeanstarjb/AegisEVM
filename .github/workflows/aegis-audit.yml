@@ -22,18 +22,18 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install AegisEVM (Mythril Engine)
-        run: pip install mythril
+      - name: Install AegisEVM (Neural Engine)
+        run: pip install .
 
       - name: Run AegisEVM Symbolic Execution
         run: |
           echo "🛡️ Starting AegisEVM Analysis on Solidity files..."
           
-          # Find all solidity files and run myth analyze on them
-          # If any issues are found, mythril returns a non-zero exit code
+          # Find all solidity files and run aegis analyze on them
+          # If any issues are found, aegisevm returns a non-zero exit code
           # which will automatically fail this GitHub Action and block the PR.
           
           for file in $(find . -name "*.sol"); do
             echo "Analyzing $file..."
-            myth analyze "$file" -t 3 --execution-timeout 60
+            aegis analyze "$file" -t 3 --execution-timeout 60
           done
