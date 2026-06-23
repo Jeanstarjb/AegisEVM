@@ -16,7 +16,7 @@ from setuptools import find_packages, setup
 from setuptools.command.install import install as _install
 
 # Package meta-data.
-NAME = "mythril"
+NAME = "aegisevm"
 DESCRIPTION = "Security analysis tool for Ethereum smart contracts"
 URL = "https://github.com/ConsenSys/mythril"
 AUTHOR = "ConsenSys Dilligence"
@@ -128,8 +128,8 @@ setup(
     tests_require=TESTS_REQUIRE,
     python_requires=REQUIRES_PYTHON,
     extras_require=EXTRAS,
-    package_data={"mythril.analysis.templates": ["*"], "mythril.support.assets": ["*"]},
+    package_data={"aegisevm.analysis.templates": ["*"], "aegisevm.support.assets": ["*"]},
     include_package_data=True,
-    entry_points={"console_scripts": ["myth=mythril.interfaces.cli:main"]},
+    entry_points={"console_scripts": ["aegis=aegisevm.interfaces.cli:main"]},
     cmdclass={"verify": VerifyVersionCommand},
 )

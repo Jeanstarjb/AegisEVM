@@ -1,18 +1,18 @@
 import unittest.mock as mock
 from unittest.mock import MagicMock
 
-from mythril.laser.ethereum.state.account import Account
-from mythril.laser.ethereum.state.world_state import WorldState
-from mythril.laser.ethereum.svm import LaserEVM
-from mythril.laser.ethereum.transaction import (
+from aegisevm.laser.ethereum.state.account import Account
+from aegisevm.laser.ethereum.state.world_state import WorldState
+from aegisevm.laser.ethereum.svm import LaserEVM
+from aegisevm.laser.ethereum.transaction import (
     ContractCreationTransaction,
     MessageCallTransaction,
 )
-from mythril.laser.ethereum.transaction.symbolic import (
+from aegisevm.laser.ethereum.transaction.symbolic import (
     execute_contract_creation,
     execute_message_call,
 )
-from mythril.laser.smt import symbol_factory
+from aegisevm.laser.smt import symbol_factory
 
 
 def _is_message_call(_, transaction, transaction_sequences):
@@ -24,7 +24,7 @@ def _is_contract_creation(_, transaction):
 
 
 @mock.patch(
-    "mythril.laser.ethereum.transaction.symbolic._setup_global_state_for_execution"
+    "aegisevm.laser.ethereum.transaction.symbolic._setup_global_state_for_execution"
 )
 def test_execute_message_call(mocked_setup: MagicMock):
     # Arrange
@@ -51,7 +51,7 @@ def test_execute_message_call(mocked_setup: MagicMock):
 
 
 @mock.patch(
-    "mythril.laser.ethereum.transaction.symbolic._setup_global_state_for_execution"
+    "aegisevm.laser.ethereum.transaction.symbolic._setup_global_state_for_execution"
 )
 def test_execute_contract_creation(mocked_setup: MagicMock):
     # Arrange

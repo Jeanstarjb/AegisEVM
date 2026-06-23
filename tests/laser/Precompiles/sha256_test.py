@@ -1,7 +1,7 @@
 import pytest
 
-from mythril.laser.ethereum.natives import NativeContractException, sha256
-from mythril.laser.smt import symbol_factory
+from aegisevm.laser.ethereum.natives import NativeContractException, sha256
+from aegisevm.laser.smt import symbol_factory
 
 
 @pytest.mark.parametrize(

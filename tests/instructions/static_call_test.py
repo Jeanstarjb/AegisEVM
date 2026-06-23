@@ -2,18 +2,18 @@ from unittest.mock import patch
 
 import pytest
 
-from mythril.disassembler.disassembly import Disassembly
-from mythril.laser.ethereum.call import SymbolicCalldata
-from mythril.laser.ethereum.evm_exceptions import WriteProtection
-from mythril.laser.ethereum.instructions import Instruction
-from mythril.laser.ethereum.state.account import Account
-from mythril.laser.ethereum.state.environment import Environment
-from mythril.laser.ethereum.state.global_state import GlobalState
-from mythril.laser.ethereum.state.machine_state import MachineState
-from mythril.laser.ethereum.state.world_state import WorldState
-from mythril.laser.ethereum.transaction import TransactionStartSignal
-from mythril.laser.ethereum.transaction.transaction_models import MessageCallTransaction
-from mythril.laser.smt import symbol_factory
+from aegisevm.disassembler.disassembly import Disassembly
+from aegisevm.laser.ethereum.call import SymbolicCalldata
+from aegisevm.laser.ethereum.evm_exceptions import WriteProtection
+from aegisevm.laser.ethereum.instructions import Instruction
+from aegisevm.laser.ethereum.state.account import Account
+from aegisevm.laser.ethereum.state.environment import Environment
+from aegisevm.laser.ethereum.state.global_state import GlobalState
+from aegisevm.laser.ethereum.state.machine_state import MachineState
+from aegisevm.laser.ethereum.state.world_state import WorldState
+from aegisevm.laser.ethereum.transaction import TransactionStartSignal
+from aegisevm.laser.ethereum.transaction.transaction_models import MessageCallTransaction
+from aegisevm.laser.smt import symbol_factory
 
 
 def get_global_state():
@@ -31,7 +31,7 @@ def get_global_state():
 
 
 @patch(
-    "mythril.laser.ethereum.instructions.get_call_parameters",
+    "aegisevm.laser.ethereum.instructions.get_call_parameters",
     return_value=(
         "0",
         Account(code=Disassembly(code="0x00"), address="0x19"),
@@ -85,7 +85,7 @@ test_data_call = ((0, True), (100, False))
 
 
 @pytest.mark.parametrize("input, success", test_data_call)
-@patch("mythril.laser.ethereum.instructions.get_call_parameters")
+@patch("aegisevm.laser.ethereum.instructions.get_call_parameters")
 def test_staticness_call_concrete(f1, input, success):
     # Arrange
     state = get_global_state()
@@ -105,7 +105,7 @@ def test_staticness_call_concrete(f1, input, success):
             instruction.evaluate(state)
 
 
-@patch("mythril.laser.ethereum.instructions.get_call_parameters")
+@patch("aegisevm.laser.ethereum.instructions.get_call_parameters")
 def test_staticness_call_symbolic(f1):
     # Arrange
     state = get_global_state()

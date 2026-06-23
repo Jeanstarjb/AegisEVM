@@ -1,4 +1,4 @@
-from mythril.ethereum.interface.rpc.client import EthJsonRpc
+from aegisevm.ethereum.interface.rpc.client import EthJsonRpc
 from tests import BaseTestCase
 
 

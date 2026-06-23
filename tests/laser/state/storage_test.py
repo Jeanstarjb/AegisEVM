@@ -1,8 +1,8 @@
 import pytest
 
-from mythril.laser.ethereum.state.account import Storage
-from mythril.laser.smt import Expression, symbol_factory
-from mythril.support.support_args import args
+from aegisevm.laser.ethereum.state.account import Storage
+from aegisevm.laser.smt import Expression, symbol_factory
+from aegisevm.support.support_args import args
 
 BVV = symbol_factory.BitVecVal
 

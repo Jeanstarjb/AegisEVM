@@ -1,21 +1,21 @@
 import pytest
 
-from mythril.analysis.module.modules.arbitrary_jump import (
+from aegisevm.analysis.module.modules.arbitrary_jump import (
     ArbitraryJump,
     is_unique_jumpdest,
 )
-from mythril.disassembler.disassembly import Disassembly
-from mythril.laser.ethereum.call import SymbolicCalldata
-from mythril.laser.ethereum.state.account import Account
-from mythril.laser.ethereum.state.constraints import Constraints
-from mythril.laser.ethereum.state.environment import Environment
-from mythril.laser.ethereum.state.global_state import GlobalState
-from mythril.laser.ethereum.state.machine_state import MachineState
-from mythril.laser.ethereum.state.world_state import WorldState
-from mythril.laser.ethereum.time_handler import time_handler
-from mythril.laser.ethereum.transaction.symbolic import ACTORS
-from mythril.laser.ethereum.transaction.transaction_models import MessageCallTransaction
-from mythril.laser.smt import symbol_factory
+from aegisevm.disassembler.disassembly import Disassembly
+from aegisevm.laser.ethereum.call import SymbolicCalldata
+from aegisevm.laser.ethereum.state.account import Account
+from aegisevm.laser.ethereum.state.constraints import Constraints
+from aegisevm.laser.ethereum.state.environment import Environment
+from aegisevm.laser.ethereum.state.global_state import GlobalState
+from aegisevm.laser.ethereum.state.machine_state import MachineState
+from aegisevm.laser.ethereum.state.world_state import WorldState
+from aegisevm.laser.ethereum.time_handler import time_handler
+from aegisevm.laser.ethereum.transaction.symbolic import ACTORS
+from aegisevm.laser.ethereum.transaction.transaction_models import MessageCallTransaction
+from aegisevm.laser.smt import symbol_factory
 
 
 def get_global_state(constraints):

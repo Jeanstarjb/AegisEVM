@@ -18,7 +18,7 @@ testfile_path = os.path.split(__file__)[0]
 
 """
 calls.bin is the bytecode of 
-https://github.com/ConsenSys/mythril/blob/develop/solidity_examples/calls.sol
+https://github.com/ConsenSys/aegisevm/blob/develop/solidity_examples/calls.sol
 """
 swc_test_data = [
     ("114", f"{TESTDATA}/inputs/calls.sol.o", (9, 5)),

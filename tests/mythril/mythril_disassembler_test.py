@@ -1,4 +1,4 @@
-from mythril.mythril import MythrilDisassembler
+from aegisevm.mythril import MythrilDisassembler
 
 storage_test = [
     (

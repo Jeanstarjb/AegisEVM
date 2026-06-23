@@ -3,8 +3,8 @@ from pathlib import Path
 
 import pytest
 
-from mythril.exceptions import CriticalError
-from mythril.mythril import MythrilConfig
+from aegisevm.exceptions import CriticalError
+from aegisevm.mythril import MythrilConfig
 
 
 def test_config_path_dynloading():

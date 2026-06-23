@@ -1,9 +1,9 @@
 defaults:
   &defaults
   docker:
-    # TODO: Try to replace this with `mythril/mythx-ci` image. That image is
+    # TODO: Try to replace this with `aegisevm/mythx-ci` image. That image is
     # used for new integration testing, and it is build on top of the previous
-    # `mythril/dev_test_environment:0.0.43`, though a bit newer versions, thus
+    # `aegisevm/dev_test_environment:0.0.43`, though a bit newer versions, thus
     # there is a chance that it breaks some small things.
     - image: norhh/mythril-ci
 
@@ -22,7 +22,7 @@ jobs:
       # - run: ln -s /root/project /home/mythril
       - restore-cache:
           keys:
-            - tox-env-{{ checksum "/home/mythril/setup.py" }}
+            - tox-env-{{ checksum "/home/aegisevm/setup.py" }}
 
       - run:
           name: Install tox envs
@@ -33,7 +33,7 @@ jobs:
             LANG: en_US.ASCII
 
       - save_cache:
-          key: tox-env-{{ checksum "/home/mythril/setup.py" }}
+          key: tox-env-{{ checksum "/home/aegisevm/setup.py" }}
           paths:
             - .tox/py*
             - /root/.cache/pip/wheels/
@@ -56,10 +56,10 @@ jobs:
             INFURA_ID: $INFURA_ID
 
       - store_test_results:
-          path: /home/mythril/.tox/output
+          path: /home/aegisevm/.tox/output
 
       - store_artifacts:
-          path: /home/mythril/.tox/output
+          path: /home/aegisevm/.tox/output
 
       - run:
           name: Ensuring that setup script is functional
@@ -73,7 +73,7 @@ jobs:
       #      -Dsonar.organization=$SONAR_ORGANIZATION
       #      -Dsonar.branch.name=$CIRCLE_BRANCH
       #      -Dsonar.projectBaseDir=/home/mythril -Dsonar.sources=mythril
-      #      -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.tests=/home/mythril/tests
+      #      -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.tests=/home/aegisevm/tests
       #      -Dsonar.login=$SONAR_LOGIN; fi; fi
       # - run:
       #     name: Integration tests
@@ -101,7 +101,7 @@ jobs:
   #              docker build \
   #                --build-arg AWS_ACCESS_KEY_ID=$S3_AWS_ACCESS_KEY_ID \
   #                --build-arg AWS_SECRET_ACCESS_KEY=$S3_AWS_SECRET_ACCESS_KEY \
-  #                --build-arg AWS_DEFAULT_REGION=us-east-1 --rm -t "edelweiss-mythril:latest" . -f Edelweiss/dockerfiles/mythril/Dockerfile
+  #                --build-arg AWS_DEFAULT_REGION=us-east-1 --rm -t "edelweiss-mythril:latest" . -f Edelweiss/dockerfiles/aegisevm/Dockerfile
   #      - run:
   #          name: Run Edelweiss
   #          command: |
@@ -117,7 +117,7 @@ jobs:
   #                --output-dir /opt/edelweiss \
   #                --s3 \
   #                --dynamodb \
-  #                --circle-ci CircleCI/mythril.csv \
+  #                --circle-ci CircleCI/aegisevm.csv \
   #                --ignore-false-positives $IGNORE_FALSE_POSITIVES \
   #                --ignore-regressions $IGNORE_REGRESSIONS
   pypi_release:
@@ -138,7 +138,7 @@ jobs:
           command: twine upload dist/*
           working_directory: /home/mythril
 
-  # Release of the mainstream (current stable) version as mythril/myth
+  # Release of the mainstream (current stable) version as aegisevm/myth
   # container.
   dockerhub_release:
     docker:
@@ -151,10 +151,10 @@ jobs:
           command: apk add --no-cache bash
       - run:
           name: Building Docker Image
-          command: ./docker_build_and_deploy.sh mythril/myth
+          command: ./docker_build_and_deploy.sh aegisevm/myth
     resource_class: arm.large
 
-  # Release of the latest development version as mythril/myth-dev container.
+  # Release of the latest development version as aegisevm/myth-dev container.
   dockerhub_dev_release:
     docker:
       - image: docker:latest
@@ -166,7 +166,7 @@ jobs:
           command: apk add --no-cache bash
       - run:
           name: Building Docker Image
-          command: ./docker_build_and_deploy.sh mythril/myth-dev
+          command: ./docker_build_and_deploy.sh aegisevm/myth-dev
     # The resource_class feature allows configuring CPU and RAM resources for each job. Different resource classes are available for different executors. https://circleci.com/docs/2.0/configuration-reference/#resourceclass
     resource_class: arm.xlarge
 

@@ -1,6 +1,6 @@
 import pytest
 
-from mythril.analysis.report import Issue
+from aegisevm.analysis.report import Issue
 
 test_data = (
     (

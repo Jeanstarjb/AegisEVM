@@ -3,13 +3,13 @@ import sys
 
 import pytest
 
-from mythril.interfaces.cli import main
+from aegisevm.interfaces.cli import main
 
 
 def test_version_opt(capsys):
     # Check that "myth --version" returns a string with the word
     # "version" in it
-    sys.argv = ["mythril", "version"]
+    sys.argv = ["aegisevm", "version"]
     with pytest.raises(SystemExit) as pytest_wrapped_e:
         main()
     assert pytest_wrapped_e.type == SystemExit
@@ -17,7 +17,7 @@ def test_version_opt(capsys):
     assert captured.out.find(" version ") >= 1
 
     # Check that "myth --version -o json" returns a JSON object
-    sys.argv = ["mythril", "version", "-o", "json"]
+    sys.argv = ["aegisevm", "version", "-o", "json"]
     with pytest.raises(SystemExit) as pytest_wrapped_e:
         main()
     assert pytest_wrapped_e.type == SystemExit

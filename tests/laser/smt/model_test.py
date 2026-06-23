@@ -1,6 +1,6 @@
 import z3
 
-from mythril.laser.smt import Solver, symbol_factory
+from aegisevm.laser.smt import Solver, symbol_factory
 
 
 def test_decls():

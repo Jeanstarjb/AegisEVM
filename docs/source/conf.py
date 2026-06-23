@@ -27,7 +27,7 @@ author = "ConsenSys Dilligence"
 # The short X.Y version
 version = ""
 # The full version, including alpha/beta/rc tags
-from mythril.__version__ import __version__ as VERSION
+from aegisevm.__version__ import __version__ as VERSION
 
 release = VERSION
 
@@ -146,7 +146,7 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [(master_doc, "mythril", "Mythril Documentation", [author], 1)]
+man_pages = [(master_doc, "aegisevm", "Mythril Documentation", [author], 1)]
 
 
 # -- Options for Texinfo output ----------------------------------------------

@@ -1,8 +1,8 @@
-from mythril.disassembler.disassembly import Disassembly
-from mythril.laser.ethereum import svm
-from mythril.laser.ethereum.state.account import Account
-from mythril.laser.ethereum.state.world_state import WorldState
-from mythril.support.support_args import args
+from aegisevm.disassembler.disassembly import Disassembly
+from aegisevm.laser.ethereum import svm
+from aegisevm.laser.ethereum.state.account import Account
+from aegisevm.laser.ethereum.state.world_state import WorldState
+from aegisevm.support.support_args import args
 
 
 def test_intercontract_call():

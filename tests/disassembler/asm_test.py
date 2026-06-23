@@ -1,6 +1,6 @@
 import pytest
 
-from mythril.disassembler.asm import (
+from aegisevm.disassembler.asm import (
     disassemble,
     find_op_code_sequence,
     get_opcode_from_name,

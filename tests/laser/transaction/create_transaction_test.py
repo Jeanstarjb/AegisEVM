@@ -1,14 +1,14 @@
 from datetime import datetime
 
-import mythril.laser.ethereum.svm as svm
+import aegisevm.laser.ethereum.svm as svm
 import tests
-from mythril.analysis.security import fire_lasers
-from mythril.analysis.symbolic import SymExecWrapper
-from mythril.disassembler.disassembly import Disassembly
-from mythril.ethereum import util
-from mythril.laser.ethereum.transaction import execute_contract_creation
-from mythril.mythril import MythrilDisassembler
-from mythril.solidity.soliditycontract import SolidityContract
+from aegisevm.analysis.security import fire_lasers
+from aegisevm.analysis.symbolic import SymExecWrapper
+from aegisevm.disassembler.disassembly import Disassembly
+from aegisevm.ethereum import util
+from aegisevm.laser.ethereum.transaction import execute_contract_creation
+from aegisevm.mythril import MythrilDisassembler
+from aegisevm.solidity.soliditycontract import SolidityContract
 
 solc_binary = MythrilDisassembler._init_solc_binary("v0.5.0")
 

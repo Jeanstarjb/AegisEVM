@@ -2,16 +2,16 @@ from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import PropertyMock, patch
 
-from mythril.analysis.report import Issue
-from mythril.mythril import MythrilAnalyzer, MythrilDisassembler
+from aegisevm.analysis.report import Issue
+from aegisevm.mythril import MythrilAnalyzer, MythrilDisassembler
 
 
-@patch("mythril.analysis.report.Issue.add_code_info", return_value=None)
+@patch("aegisevm.analysis.report.Issue.add_code_info", return_value=None)
 @patch(
-    "mythril.mythril.mythril_analyzer.fire_lasers",
+    "aegisevm.aegisevm.mythril_analyzer.fire_lasers",
     return_value=[Issue("", "", "234", "101", "title", "0x02445")],
 )
-@patch("mythril.mythril.mythril_analyzer.SymExecWrapper")
+@patch("aegisevm.aegisevm.mythril_analyzer.SymExecWrapper")
 def test_fire_lasers(mock_sym, mock_fire_lasers, mock_code_info):
     type(mock_sym.return_value).execution_info = PropertyMock(return_value=[])
     disassembler = MythrilDisassembler(eth=None, solc_version="v0.5.0")

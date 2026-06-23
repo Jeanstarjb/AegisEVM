@@ -47,7 +47,7 @@ pip install google-genai
 export GOOGLE_API_KEY="your-api-key"
 
 # Pipe your audit log into the explainer
-myth analyze target.sol > audit.log
+aegis analyze target.sol > audit.log
 python aegis_ai.py --log audit.log --source target.sol
 ```
 

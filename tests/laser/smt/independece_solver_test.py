@@ -1,7 +1,7 @@
 import z3
 
-from mythril.laser.smt import symbol_factory
-from mythril.laser.smt.solver.independence_solver import (
+from aegisevm.laser.smt import symbol_factory
+from aegisevm.laser.smt.solver.independence_solver import (
     DependenceBucket,
     DependenceMap,
     IndependenceSolver,
